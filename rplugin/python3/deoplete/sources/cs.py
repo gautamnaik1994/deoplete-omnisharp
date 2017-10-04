@@ -12,7 +12,7 @@ class Source(Base):
 
         self.name = 'cs'
         self.mark = '[CS]'
-        self.rank = 500
+        self.rank = 1000
         self.filetypes = ['cs']
         self.input_pattern = '\.\w*'
         self.is_bytepos = True
@@ -60,7 +60,7 @@ class Source(Base):
             kind_str = item['ReturnType'] or item['DisplayText']
 
             completionText = item['CompletionText']
-            description = item['Description'].replace('\r\n', '\n') or ''
+            description = item['Description'].replace('\r\n', '\n') if item['Description'] is not None else ''
 
             completions.append(dict(
                 word=completionText,
